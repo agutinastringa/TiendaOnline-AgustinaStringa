@@ -29,35 +29,36 @@ function calcularTotal(productos){
 }
 
 function calcularCuotas(total){
-    porcentaje = total * 0.15;
-    descuento = total - porcentaje;
-    tresCuotas = porcentaje * 3;
-    tresTotal = tresCuotas *3;
-    seisCuotas = porcentaje * 6;
-    seisTotal = seisCuotas * 6;
-    cuotas = prompt('En cuantas cuotas desea pagarlo? \n0. Transferencia bancaria (15% descuento) $' + descuento + '\n1. 1 x $' + total + ' ($' + total + ') \n3. 3 x $' + tresCuotas + ' ($' + tresTotal + ') \n6. 6 x $' + seisCuotas + ' ($' + seisTotal + ') \n99. Salir');
+    let container = document.getElementById("contenedor");
+    let porcentaje = total * 0.15;
+    let descuento = total - porcentaje;
+    let tresCuotas = porcentaje * 3;
+    let tresTotal = tresCuotas *3;
+    let seisCuotas = porcentaje * 6;
+    let seisTotal = seisCuotas * 6;
+    let cuotas = prompt('En cuantas cuotas desea pagarlo? \n0. Transferencia bancaria (15% descuento) $' + descuento + '\n1. 1 x $' + total + ' ($' + total + ') \n3. 3 x $' + tresCuotas + ' ($' + tresTotal + ') \n6. 6 x $' + seisCuotas + ' ($' + seisTotal + ') \n99. Salir');
     while(cuotas != '99'){
         switch(cuotas){
             case '0':
                 const hoy = new Date();
                 const milisegundosPorDia = 86400000;
                 const maniana = new Date(hoy.getTime() + milisegundosPorDia);
-                alert('Gracias por su compra!! \nDebe realizar la transferencia bancaria al alias: PADEL.TO antes del ' + maniana.toLocaleString());
+                container.innerHTML = '<h2>Gracias por su compra!!</h2><p>Debe realizar la transferencia bancaria al alias: PADEL.TO antes del ' + maniana.toLocaleString() + '</p>';
+                break;
             case '1':
-                alert('Gracias por su compra!! \nSu pago se realizará en 1 cuota de $' + precio);
+                container.innerHTML = '<h2>Gracias por su compra!!</h2><p>Su pago se realizará en 1 cuota de $' + precio + '</p>';
                 break;
             case '3':
-                alert('Gracias por su compra!! \nSu pago se realizará en 3 cotas de $' + tresCuotas);
+                container.innerHTML = '<h2>Gracias por su compra!!</h2><p>Su pago se realizará en 3 cuotas de $' + tresCuotas + '</p>';
                 break;
             case '6':
-                alert('Gracias por su compra!! \nSu pago se realizará en 6 cotas de $' + seisCuotas);
+                container.innerHTML = '<h2>Gracias por su compra!!</h2><p>Su pago se realizará en 6 cuotas de $' + seisCuotas + '</p>';
                 break;
             default:
                 alert('Opción incorrecta');
                 cuotas = prompt('En cuantas cuotas desea pagarlo? \n1. 1 x $' + total + ' ($' + total + ') \n3. 3 x $' + tresCuotas + ' ($' + tresTotal + ') \n6. 6 x $' + seisCuotas + ' ($' + seisTotal + ') \n99. Salir');
                 break;
         }
-        alert('Vuelva pronto!!');
         cuotas = 99;
     }
 }
